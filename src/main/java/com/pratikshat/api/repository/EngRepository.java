@@ -13,7 +13,7 @@ import com.pratikshat.api.entity.LoginData;
 public interface EngRepository extends JpaRepository<EngData, Integer> {
 	
 	
-	@Query("SELECT name,date,profile,assigned_task,reported_to  FROM EngData   ")
-	public List<EngData> findByEngdata();
+//	@Query("SELECT name,date,profile,assigned_task,reported_to  FROM EngData   ")
+//	public List<EngData> findByEngdata();
 
 }

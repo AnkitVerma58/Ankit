@@ -34,8 +34,7 @@ public class EngData {
 	private String assigned_task;
 	private String reported_to;
 	
-	@OneToMany( mappedBy = "EngData" )
-	private EngDetails engDetails;
+	
 	/**
 	 * @return the engid
 	 */
@@ -108,18 +107,7 @@ public class EngData {
 	public void setReported_to(String reported_to) {
 		this.reported_to = reported_to;
 	}
-	/**
-	 * @return the engDetails
-	 */
-	public EngDetails getEngDetails() {
-		return engDetails;
-	}
-	/**
-	 * @param engDetails the engDetails to set
-	 */
-	public void setEngDetails(EngDetails engDetails) {
-		this.engDetails = engDetails;
-	}
+	
 
 	
 	

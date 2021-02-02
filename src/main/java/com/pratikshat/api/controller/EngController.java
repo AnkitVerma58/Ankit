@@ -30,14 +30,19 @@ public class EngController {
 	 {
 	
 		ResponseEntity login2=engService.loginData(loginData);
-		 return login2;
+		 return ResponseEntity.ok(login2);
+		 
 	 }
 	 
 	 @RequestMapping(value = "/savedetails", method = RequestMethod.POST)
 	 public ResponseEntity<?> saveEngDetails(@RequestBody EngDetails engDetails )
 	 {
+		 
+		
 		 String str=engService.saveEngDetails(engDetails); 
-		 return ResponseEntity.ok("{str}");
+		 RoleClass role=new RoleClass();
+		 role.setResponse(str);
+		 return ResponseEntity.ok(role);
 	 }
 	 
 	 @RequestMapping(value = "/getdetails", method = RequestMethod.POST)
@@ -51,7 +56,7 @@ public class EngController {
 			
 					return ResponseEntity.ok(list);
 			}
-			else if( engDetails.getEngid()!=0   && engDetails.getDate()==null)
+			else if( engDetails.getEngid()!=0  && engDetails.getDate().toString().equalsIgnoreCase(""))
 			{ 
 				EngDetails engDetails2=engService.getEngid(engDetails);
 				
@@ -81,7 +86,9 @@ public class EngController {
 	          str=engService.update(engDetails);
 	         }
 	        catch(Exception e){e.printStackTrace();}
-		 	return ResponseEntity.ok(str);
+		 RoleClass role=new RoleClass();
+		 role.setResponse(str);
+		 	return ResponseEntity.ok(role);
 	       
 }
 	 @RequestMapping(value = "/getengdata", method = RequestMethod.POST)
@@ -102,6 +109,7 @@ public class EngController {
 	  }
 		 else
 		 {
+			 
 			 return  ResponseEntity.badRequest().body("not correct role");
 		 }
 		 }

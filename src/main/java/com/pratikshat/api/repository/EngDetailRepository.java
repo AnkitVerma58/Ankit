@@ -18,7 +18,9 @@ public interface EngDetailRepository extends JpaRepository<EngDetails, Integer>{
 	
 	
 	
-	public EngDetails findByEngid( int id);
+	public EngDetails findByEngid(int id);
+	
+	public EngDetails findByEngname(String name);
 	
 	
 	public List<EngDetails> findByDate( String date);

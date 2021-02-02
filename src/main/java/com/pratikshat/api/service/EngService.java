@@ -62,6 +62,11 @@ public class EngService {
 	
 	public String saveEngDetails(EngDetails engDetails)
 	{
+		EngDetails engDetails2=engDetailRepository.findByEngname( engDetails.getEngname());
+		if(engDetails2!=null)
+		{return "{data already inserted}";}
+		else
+		{
 	EngData engData=new EngData();
 	
 	engData.setEngid(engDetails.getEngid());
@@ -77,9 +82,8 @@ public class EngService {
 	engDetailRepository.save(engDetails);
 		System.out.println(engDetails.getEngid());
 		
-		
-		 
 		return "{data inserted}";
+		}
 	}
 	
 	public  EngDetails getEngid(EngDetails engDetails )
@@ -115,7 +119,7 @@ public class EngService {
 	
 	public List<EngData> getEngData()
 	{
-		List<EngData> list=engRepository.findByEngdata();
+		List<EngData> list=engRepository.findAll();
 		return list;
 	}
 	
